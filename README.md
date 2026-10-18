@@ -12,18 +12,9 @@ Each face is turned into a vector that describes its features. Two photos of the
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    A[Webcam] --> B[Haar cascade<br/>face detection]
-    B --> C[Crop & resize<br/>224 × 224]
-    C --> D[VGG-Face<br/>pretrained]
-    D --> E[2,622-d<br/>face vector]
-    R[(5 reference<br/>images)] --> D
-    E --> F{Cosine < 0.23<br/>and<br/>Euclidean < 90?}
-    F --> G{4 of 5<br/>matched?}
-    G -- Yes --> H[Record attendance<br/>to CSV]
-    G -- No --> I[Rejected]
-```
+<p align="center">
+  <img src="docs/vggface-flow.svg" alt="VGG-Face verification flow: capture a face, compare its VGG-Face vector with 5 reference images by cosine and Euclidean distance, and log attendance if at least 4 of 5 match" width="100%">
+</p>
 
 **1. Registration** (`face_register_manual_csv.py`)
 - Registers a person into a CSV user database and captures reference face images from a webcam

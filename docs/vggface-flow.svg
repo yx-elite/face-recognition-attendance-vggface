@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 292" width="960" height="292" role="img" aria-label="VGG-Face verification flow: capture a face, turn it and 5 reference images into 2,622-dimension vectors with pretrained VGG-Face, check cosine and Euclidean distance for each pair, and log attendance if at least 4 of 5 pairs match, otherwise reject">
+<title>VGG-Face verification flow</title>
+<style>
+  :root { --card:#f8fafc; --line:#cbd5e1; --text:#0f172a; --muted:#475569; --sky:#0284c7; --violet:#7c3aed; --green:#059669; --red:#dc2626; --lane:#f1f5f9; --okbg:#d1fae5; --nobg:#fee2e2; --hl:#ede9fe; }
+  @media (prefers-color-scheme: dark) {
+    :root { --card:#0f172a; --line:#334155; --text:#e2e8f0; --muted:#94a3b8; --sky:#38bdf8; --violet:#a78bfa; --green:#34d399; --red:#f87171; --lane:#0b1222; --okbg:#06301f; --nobg:#3a1010; --hl:#241a45; }
+  }
+  text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; fill: var(--text); text-anchor: middle; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .lane { fill: var(--lane); stroke: var(--line); stroke-width: 1; }
+  .lanelabel { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; fill: var(--sky); text-anchor: start; }
+  .card { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
+  .hl { fill: var(--hl); stroke: var(--violet); stroke-width: 1.5; }
+  .title { font-size: 13.5px; font-weight: 600; }
+  .sub { font-size: 11.5px; fill: var(--muted); }
+  .arrow { fill: none; stroke: var(--muted); stroke-width: 1.6; marker-end: url(#h); }
+  .dash { fill: none; stroke: var(--violet); stroke-width: 1.6; stroke-dasharray: 4 3; marker-end: url(#hv); }
+</style>
+<defs>
+  <marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748b"/></marker>
+  <marker id="hv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b5cf6"/></marker>
+</defs>
+
+<rect class="lane" x="10" y="10" width="940" height="272" rx="14"/>
+<text x="30" y="36" class="lanelabel">VERIFICATION · NO TRAINING NEEDED</text>
+
+<!-- Reference store, centred above VGG-Face (cx 302.5) -->
+<path class="card" d="M227.5 68 a75 9 0 0 1 150 0 v50 a75 9 0 0 1 -150 0 z"/>
+<path d="M 227.5 68 a 75 9 0 0 0 150 0" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+<text x="302.5" y="99" class="title">5 reference images</text>
+<text x="302.5" y="116" class="sub">from registration</text>
+<path class="dash" d="M 302.5 131 V 149"/>
+
+<!-- Main row: all boxes 90 tall, centred on y = 160, 37.5px gaps -->
+<rect class="card" x="30" y="151" width="150" height="90" rx="10"/>
+<text x="105" y="182" class="title">Capture face</text>
+<text x="105" y="202" class="sub">webcam +</text>
+<text x="105" y="218" class="sub">Haar cascade</text>
+<path class="arrow" d="M 180 196 H 215"/>
+
+<rect class="hl" x="217.5" y="151" width="170" height="90" rx="10"/>
+<text x="302.5" y="177" class="title">VGG-Face</text>
+<text x="302.5" y="195" class="sub">pretrained</text>
+<text x="302.5" y="213" class="sub mono">→ 2,622-d vector</text>
+<text x="302.5" y="229" class="sub">per face</text>
+<path class="arrow" d="M 387.5 196 H 422.5"/>
+
+<rect class="card" x="425" y="151" width="180" height="90" rx="10"/>
+<text x="515" y="177" class="title">Pair match?</text>
+<text x="515" y="197" class="sub mono">cosine &lt; 0.23</text>
+<text x="515" y="213" class="sub">and</text>
+<text x="515" y="229" class="sub mono">Euclidean &lt; 90</text>
+<path class="arrow" d="M 605 196 H 640"/>
+
+<rect class="card" x="642.5" y="151" width="120" height="90" rx="10"/>
+<text x="702.5" y="182" class="title">Vote</text>
+<text x="702.5" y="202" class="sub">≥ 4 of 5</text>
+<text x="702.5" y="218" class="sub">match?</text>
+
+<!-- Outcomes: symmetric around y = 160 -->
+<path class="arrow" d="M 762.5 186 H 774 Q 781 186 781 179 V 165 Q 781 158 788 158 H 798"/>
+<path class="arrow" d="M 762.5 206 H 774 Q 781 206 781 213 V 227 Q 781 234 788 234 H 798"/>
+
+<rect x="800" y="130" width="130" height="56" rx="10" fill="var(--okbg)" stroke="var(--green)" stroke-width="1.5"/>
+<text x="865" y="154" class="title" style="fill:var(--green)">Logged</text>
+<text x="865" y="172" class="sub">daily CSV log</text>
+
+<rect x="800" y="206" width="130" height="56" rx="10" fill="var(--nobg)" stroke="var(--red)" stroke-width="1.5"/>
+<text x="865" y="230" class="title" style="fill:var(--red)">Rejected</text>
+<text x="865" y="248" class="sub">not logged</text>
+</svg>
