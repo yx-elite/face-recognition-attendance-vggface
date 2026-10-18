@@ -82,6 +82,11 @@ Download the pretrained weights ([vgg_face_weights.h5](https://github.com/sereng
 - **Why we moved on:** VGG-Face is pretrained, so the network itself was a black box. For the final system we designed and trained our own CNN as a Siamese network, to understand and control every layer
 - **Verification fits attendance better than classification:** new people shouldn't require retraining
 
+## Credits
+
+- **VGG-Face model:** O. M. Parkhi, A. Vedaldi and A. Zisserman, "[Deep Face Recognition](https://www.robots.ox.ac.uk/~vgg/publications/2015/Parkhi15/)", British Machine Vision Conference, 2015
+- **Keras weights and approach:** Sefik Ilkin Serengil's [VGG-Face tutorial](https://sefiks.com/2018/08/06/deep-face-recognition-with-keras/) and [deepface](https://github.com/serengil/deepface) weights
+
 ## Related Work
 
 This is one of three approaches I explored for face recognition:
